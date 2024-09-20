@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import { useTheme } from './context/ThemeContext'
 import Layout from './assets/Components/Layout'
 import Navbar from './assets/Components/Navbar'
+import LoadingSpinner from './assets/Components/LoadingSpinner'
 
 const Home = lazy(() => import('./assets/Components/Home'))
 const About = lazy(() => import('./assets/Components/About'))
@@ -15,7 +16,7 @@ function App() {
   return (
     <div className={`${isDarkMode ? 'dark' : ''}`}>
       <Navbar />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingSpinner />}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
