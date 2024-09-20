@@ -1,0 +1,100 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Ajustes de tamaño y espaciado */
+h1 {
+  @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-6;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl font-semibold mb-4;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl font-medium mb-3;
+}
+
+p {
+  @apply text-base md:text-lg mb-4 leading-relaxed;
+}
+
+.container {
+  @apply px-4 md:px-6 lg:px-8 py-8 md:py-12 lg:py-16;
+}
+
+/* Animaciones existentes */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 1s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out;
+}
+
+/* Estilos para la selección de texto */
+::selection {
+  background-color: rgba(79, 70, 229, 0.3); /* Indigo semitransparente */
+  color: inherit;
+}
+
+/* Estilos para la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Estilos para modo oscuro */
+.dark ::selection {
+  background-color: rgba(199, 210, 254, 0.3); /* Indigo claro semitransparente */
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #2d3748; /* Gray-800 */
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a5568; /* Gray-700 */
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #718096; /* Gray-600 */
+}
