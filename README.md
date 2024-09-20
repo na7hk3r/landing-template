@@ -1,6 +1,6 @@
 # 73lab Landing Page Template 🚀
 
-![73lab Logo](./public/logo.png)
+<img src="./public/logo.png" alt="73lab Logo" width="200"/>
 
 ## 🌟 Características Principales
 
@@ -38,27 +38,28 @@
 
 ## 📂 Estructura del Proyecto
 
+```
 landing-template/
 ├── public/
-│ └── logo.png
+│   └── logo.png
 ├── src/
-│ ├── assets/
-│ │ └── Components/
-│ │ ├── Footer.jsx
-│ │ ├── Home.jsx
-│ │ ├── Layout.jsx
-│ │ └── Navbar.jsx
-│ ├── context/
-│ │ ├── LanguageContext.js
-│ │ └── ThemeContext.js
-│ ├── util/
-│ │ └── translations.js
-│ ├── App.jsx
-│ └── index.css
+│   ├── assets/
+│   │   └── Components/
+│   │       ├── Footer.jsx
+│   │       ├── Home.jsx
+│   │       ├── Layout.jsx
+│   │       └── Navbar.jsx
+│   ├── context/
+│   │   ├── LanguageContext.js
+│   │   └── ThemeContext.js
+│   ├── util/
+│   │   └── translations.js
+│   ├── App.jsx
+│   └── index.css
 ├── .gitignore
 ├── package.json
 └── README.md
-
+```
 
 ## 🎨 Personalización
 
