@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '../../context/ThemeContext'
 import { useLanguage } from '../../context/LanguageContext'
 import { translations } from '../../util/translations'
+import { debounce } from 'lodash'
 
 const Navbar = () => {
   const { isDarkMode, toggleTheme } = useTheme()
@@ -11,13 +12,17 @@ const Navbar = () => {
   const location = useLocation()
   const [isScrolled, setIsScrolled] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => {
+  const handleScroll = useCallback(
+    debounce(() => {
       setIsScrolled(window.scrollY > 10)
-    }
+    }, 100),
+    []
+  )
+
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [handleScroll])
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${
@@ -30,8 +35,8 @@ const Navbar = () => {
       <div className={`container mx-auto px-4 flex justify-between items-center transition-all duration-300 ${
         isScrolled ? 'h-12' : 'h-16'
       }`}>
-        <Link to="/" className="flex items-center space-x-2">
-          <img src="/logo.png" alt="Logo" className={`object-contain transition-all duration-300 ${
+        <Link to="/" className="flex items-center space-x-2 group">
+          <img src="/logo.png" alt="Logo" className={`object-contain transition-all duration-300 group-hover:rotate-12 ${
             isScrolled ? 'w-6 h-6' : 'w-8 h-8'
           }`} />
           <span className={`font-semibold transition-all duration-300 ${
@@ -55,7 +60,7 @@ const Navbar = () => {
                   {t[item]}
                   <span className={`absolute left-0 right-0 bottom-0 h-0.5 transform scale-x-0 transition-transform duration-300 ${
                     isDarkMode ? 'bg-white' : 'bg-gray-900'
-                  } ${location.pathname === (item === 'home' ? '/' : `/${item}`) ? 'scale-x-100' : ''}`}></span>
+                  } ${location.pathname === (item === 'home' ? '/' : `/${item}`) ? 'scale-x-100' : ''} group-hover:scale-x-100`}></span>
                 </Link>
               </li>
             ))}
@@ -69,7 +74,9 @@ const Navbar = () => {
               isDarkMode 
                 ? 'bg-gray-700 text-white hover:bg-gray-600' 
                 : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
-            } ${isScrolled ? 'text-sm' : 'text-base'}`}
+            } ${isScrolled ? 'text-sm' : 'text-base'} focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+              isDarkMode ? 'focus:ring-gray-500' : 'focus:ring-gray-400'
+            }`}
           >
             <option value="es">ES</option>
             <option value="en">EN</option>
@@ -81,7 +88,9 @@ const Navbar = () => {
               isDarkMode 
                 ? 'bg-yellow-400 text-gray-900 hover:bg-yellow-300' 
                 : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
-            } ${isScrolled ? 'p-1.5' : 'p-2'}`}
+            } ${isScrolled ? 'p-1.5' : 'p-2'} focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+              isDarkMode ? 'focus:ring-yellow-500' : 'focus:ring-gray-400'
+            }`}
             aria-label={isDarkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
           >
             {isDarkMode ? (

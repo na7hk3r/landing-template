@@ -1,16 +1,16 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { useTheme } from '../../context/ThemeContext'
-import Navbar from './Navbar'
-import Footer from './Footer'  // Asegúrate de que esta línea esté presente
+import Footer from './Footer'
+import Background from './Background'
 
 const Layout = () => {
   const { isDarkMode } = useTheme()
 
   return (
-    <div className={`min-h-screen flex flex-col ${isDarkMode ? 'dark bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'} transition-colors duration-500`}>
-      <Navbar />
-      <main className="flex-grow">
+    <div className={`min-h-screen flex flex-col ${isDarkMode ? 'dark' : ''}`}>
+      <Background />
+      <main className="flex-grow relative z-10 min-h-screen">
         <Outlet />
       </main>
       <Footer />
@@ -18,4 +18,4 @@ const Layout = () => {
   )
 }
 
-export default Layout
+export default React.memo(Layout)

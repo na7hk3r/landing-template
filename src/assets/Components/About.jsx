@@ -9,7 +9,11 @@ const About = () => {
   const t = translations[language]
 
   return (
-    <div className={`container mx-auto px-4 py-16 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+    <div className={`
+      container mx-auto px-4 py-16 
+      ${isDarkMode ? 'text-white bg-gray-900/80' : 'text-gray-900 bg-white/80'}
+      rounded-lg backdrop-blur-sm
+    `}>
       <h1 className="text-4xl font-bold mb-8">{t.aboutUs}</h1>
       <p className="text-xl mb-8">
         {t.aboutDescription}
