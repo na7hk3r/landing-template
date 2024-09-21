@@ -1,8 +1,9 @@
 {
-  "name": "coso",
+  "name": "landing-template",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "author": "na7hk3r",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
